@@ -1,0 +1,41 @@
+:root {
+	--black: #232323;
+	--white: #F2F2F2;
+	--orange: #FF8B29;
+	--yellow: #FFCC00;
+	--blue: #2EAFFF;
+	--red: #FF4A3D;
+}
+@font-face {
+	font-family: "Karrik";
+	src: url("assets/fonts/Karrik-Regular.woff2");
+	font-style: normal;
+}
+@font-face {
+	font-family: "Karrik";
+	src: url("assets/fonts/Karrik-Italic.woff2");
+	font-style: italic;
+}
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Karrik", sans-serif;
+	box-sizing: border-box;
+	font-feature-settings: "ss01", "ss04";
+}
+body {
+	background: var(--black);
+	color: var(--white);
+	font-size: 20px;
+}
+a {
+	color: inherit;
+}
+a:hover {
+	text-decoration: none;
+}
+@media screen and (max-width: 800px) {
+	body {
+		font-size: 10px;
+	}
+}

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ARCHIVE ARCADE</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		.container {
+			height: 100vh;
+			overflow-y: hidden;
+			overflow-x: hidden;
+			position: relative;
+		}
+
+		/* LOGO */
+		.logo-container {
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			animation-name: logo-move;
+			animation-delay: 1.5s;
+			animation-duration: 1s;
+			animation-timing-function: ease-in-out;
+			animation-fill-mode: forwards;
+		}
+		.logo {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			max-width: 600px;
+			width: 100%;
+			font-size: 1rem;
+		}
+		.logo div {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.logo img {
+			position: absolute;
+			z-index: -1;
+			animation-name: logo-blink;
+			animation-duration: 3s;
+			animation-direction: reverse;
+			animation-iteration-count: infinite;
+			animation-timing-function: ease;
+		}
+		.logo h1 {
+			top: 0;
+			left: 50%;
+			color: var(--black);
+			text-transform: uppercase;
+			text-align: center;
+			font-size: 36px;
+		}
+		@keyframes logo-blink {
+			0% {
+				transform: scaleY(1);
+			}
+			60% {
+				transform: scaleY(1);
+			}
+			65% {
+				transform: scaleY(0);
+			}
+			70% {
+				transform: scaleY(1);
+			}
+			75% {
+				transform: scaleY(1);
+			}
+			80% {
+				transform: scaleY(0);
+			}
+			85% {
+				transform: scaleY(1);
+			}
+		}
+		@keyframes logo-move {
+			from {
+				height: 100vh;
+			}
+			to {
+				height: 20vh;
+			}
+		}
+
+		/* CHOICES */
+		@keyframes choices-move {
+			from {
+				transform: translateY(120vh);
+			}
+			to {
+				transform: translateY(0vh);
+			}
+		}
+		.choices {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			height: 80vh;
+			padding-bottom: 20vh;
+			width: 100vw;
+			position: absolute;
+			top: 20vh;
+			gap: 10px;
+			animation-name: choices-move;
+			animation-delay: 2s;
+			animation-duration: 1s;
+			animation-timing-function: ease-out;
+			animation-fill-mode: forwards;
+			transform: translateY(120vh);
+		}
+		.choices a {
+			text-decoration: none;
+			text-align: center;
+			text-transform: uppercase;
+			color: var(--black);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			font-size: 48px;
+			transition: border .2s, border-radius .2s, transform .2s;
+			border-radius: 50%;
+			transform: scale(1.1);
+			position: relative;
+			z-index: 1;
+			line-height: 1em;
+		}
+		.choices a:hover {
+			transform: scale(1.2);
+			z-index: 9;
+		}
+		.choices a:active {
+			transform: scale(.9);
+		}
+		.choices a span {
+			transition: transform .2s;
+			animation-name: choice-idle;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+			animation-timing-function: ease-in-out;
+		}
+		@keyframes choice-idle {
+			from {
+				transform: rotate(-20deg);
+			}
+			to {
+				transform: rotate(20deg);
+			}
+		}
+		@keyframes choice-hover {
+			0% {
+				opacity: 1;
+			}
+			50% {
+				opacity: 0;
+			}
+		}
+		.choice-1 {
+			background: var(--orange);
+			border: 0px solid var(--orange);
+		}
+		.choice-1:hover {
+			color: var(--orange);
+			border: 10px solid var(--orange);
+			background: var(--black);
+		}
+		.choice-2 {
+			background: var(--yellow);
+			border: 0px solid var(--yellow);
+		}
+		.choice-2:hover {
+			color: var(--yellow);
+			border: 10px solid var(--yellow);
+			background: var(--black);
+		}
+		.choice-3 {
+			background: var(--blue);
+			border: 0px solid var(--blue);
+		}
+		.choice-3:hover {
+			color: var(--blue);
+			border: 10px solid var(--blue);
+			background: var(--black);
+		}
+		.choice-line-1, .choice-line-2 {
+			opacity: 0;
+		}
+		.choices a:hover .choice-line-0 {
+			animation-name: choice-hover;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-timing-function: steps(1);
+			animation-direction: normal;
+		}
+		.choices a:hover .choice-line-1 {
+			animation-name: choice-hover;
+			animation-delay: .2s;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-timing-function: steps(1);
+			animation-direction: normal;
+		}
+		.choices a:hover .choice-line-2 {
+			animation-name: choice-hover;
+			animation-delay: .4s;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-timing-function: steps(1);
+			animation-direction: normal;
+		}
+
+		/* MARQUEE */
+		@keyframes marquee {
+			from {
+				transform: translateX(0%);
+			}
+			to {
+				transform: translateX(-80%);
+			}
+		}
+		@keyframes marquee-move {
+			from {
+				bottom: -30vh;
+			}
+			to {
+				bottom: 0vh;
+			}
+		}
+		.marquee {
+			position: absolute;
+			bottom: -30vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			white-space: nowrap;
+			animation: linear 180s infinite alternate marquee, 1s ease forwards 2.5s marquee-move;
+			opacity: .15;
+			font-size: 128px;
+			pointer-events: none;
+			color: var(--black);
+			-webkit-text-stroke: 2px var(--white);
+		}
+		.choice-1:hover ~ .marquee {
+			opacity: 1;
+			-webkit-text-stroke: 2px var(--orange);
+		}
+		.choice-2:hover ~ .marquee {
+			opacity: 1;
+			-webkit-text-stroke: 2px var(--yellow);
+		}
+		.choice-3:hover ~ .marquee {
+			opacity: 1;
+			-webkit-text-stroke: 2px var(--blue);
+		}
+
+		@keyframes about-move {
+			from {
+				transform: translate(20vw, -20vw);
+			}
+			to {
+				transform: translate(0vw, 0vw);
+			}
+		}
+		.about-btn-container {
+			animation-name: about-move;
+			animation-delay: 4s;
+			animation-duration: 1.5s;
+			animation-timing-function: ease-out;
+			animation-fill-mode: forwards;
+			position: absolute;
+			top: 0;
+			right: 0;
+			transform: translate(20vw, -20vw);
+			transition: .2s;
+			z-index: 99;
+		}
+		.about-btn {
+			position: absolute;
+			top: -50px;
+			right: -50px;
+			aspect-ratio: 1/1;
+			background-color: var(--red);
+			border-radius: 50%;
+			height: 150px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--black);
+			font-size: 24px;
+			transform: rotate(-30deg) scale(.8);
+			cursor: pointer;
+			transition: .2s;
+			border: none;
+		}
+		.about-btn:hover {
+			transform: rotate(0deg) scale(1);
+			top: 0px;
+			right: 0px;
+		}
+		.about-btn-hide {
+			transform: rotate(180deg) scale(0) !important;
+		}
+		.about-btn2 {
+			background-color: var(--white);
+		}
+		.about-info {
+			position: absolute;
+			top: 105vh;
+			font-size: 48px;
+			line-height: 1.2em;
+			transition: top 1s;
+			transition-timing-function: ease-in-out;
+			background-color: var(--red);
+			color: var(--white);
+			padding: 80px;
+			overflow-y: scroll;
+			height: 100vh;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 1.8em;
+		}
+		.about-info p {
+			max-width: 1000px;
+			width: 100%;
+		}
+		.about-info-show {
+			top: 0;
+		}
+		.about-info-rev {
+			color: var(--black);
+		}
+
+		/* MOBILE STYLES */
+		@media screen and (max-width: 800px) {
+			.logo h1 {
+				font-size: 24px;
+			}
+			.choices {
+				grid-template-columns: 1fr;
+			}
+			.choices a {
+				font-size: 36px;
+				height: 33vh;
+				margin-bottom: -10vh;
+			}
+			.marquee {
+				opacity: 0 !important;
+			}
+			.about-info {
+				font-size: 24px;
+				padding: 80px 80px 80px 40px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<header class="logo-container">
+			<div class="logo">
+				<div>
+					<img src="assets/hub/eye.svg">
+					<h1>Archive</h1>
+				</div>
+				<div>
+					<img src="assets/hub/eye.svg">
+					<h1>Arcade</h1>
+				</div>
+			</div>
+		</header>
+
+		<main class="choices">
+			<a href="#" class="choice-1">
+				<span class="choice-line-2" style="color:var(--yellow);">Wreck</span>
+				<span class="choice-line-1" style="color:var(--blue);">Wreck</span>
+				<span class="choice-line-0">Wreck</span>
+				<span class="choice-line-1" style="color:var(--blue);">Wreck</span>
+				<span class="choice-line-2" style="color:var(--yellow);">Wreck</span>
+			</a>
+			<a href="#" class="choice-2">
+				<span class="choice-line-2" style="color:var(--blue);">Witness</span>
+				<span class="choice-line-1" style="color:var(--orange);">Witness</span>
+				<span class="choice-line-0">Witness</span>
+				<span class="choice-line-1" style="color:var(--orange);">Witness</span>
+				<span class="choice-line-2" style="color:var(--blue);">Witness</span>
+			</a>
+			<a href="#" class="choice-3">
+				<span class="choice-line-2" style="color:var(--orange);">Weave</span>
+				<span class="choice-line-1" style="color:var(--yellow);">Weave</span>
+				<span class="choice-line-0">Weave</span>
+				<span class="choice-line-1" style="color:var(--yellow);">Weave</span>
+				<span class="choice-line-2" style="color:var(--orange);">Weave</span>
+			</a>
+
+			<div class="marquee">
+				<p>PICK A GAME ↑ PICK A GAME ↑ PICK A GAME ↑ PICK A GAME ↑ PICK A GAME ↑ PICK A GAME ↑ PICK A GAME ↑ PICK A GAME</p>
+			</div>
+		</main>
+
+		<div class="about-btn-container">
+			<button class="about-btn" onclick="aboutShow()">ABOUT</button>
+		</div>
+
+		<div class="about-btn-container">
+			<button class="about-btn about-btn2 about-btn-hide" onclick="aboutHide()">RETURN</button>
+		</div>
+
+		<div class="about-info">
+			<p><span class="about-info-rev">Design + Code:</span> <a href="https://www.gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a>.</p>
+			<p><span class="about-info-rev">Colophon:</span> <em>Karrik</em> by Jean-Baptiste Morizot and Lucas Le Bihan published by <a href="https://velvetyne.fr/fonts/karrik/" target="_blank">Velvetyne</a>.</p>
+			<p><span class="about-info-rev">What is this?</span> An arcade? Sort of. Maybe it’s a question: what is a game? Does it have to be joyful? Does it stop being a game if it’s not? Where do we draw that line?</p>
+			<p>This project started at the <a href="https://www.provlib.org/" target="_blank">Providence Public Library</a> during the Fall 2022 semester of RISD’s Graphic Design MFA program. This project began by looking at a vintage <a href="https://en.wikipedia.org/wiki/Whist" target="_blank">Whist</a> game board dating back at least 100 years. I tried to understand the game’s rules from the board, but this proved to be impossible — insufficient data. Cards were missing, no branding was visible, and a “patent pending” label lacked any real identification. What I was looking at no longer had info or history. Instead, it had degraded into a graphic artifact.</p>
+			<p>This arcade was inspired by that Whist board. Through these three games, I ask you to draw a line between play and meaning, or at least to question where this connection gets made in your head.</p>
+			<p><span class="about-info-rev">Is destruction fun?</span> What about in the context of what you’re destroying?</p>
+			<p><span class="about-info-rev">Is smiling fun?</span> What about in the context of what you’re smiling at?</p>
+			<p><span class="about-info-rev">Is creation fun?</span> What about in the context of what you’re creating?</p>
+		</div>
+	</div>
+
+	<script>
+		let about = document.querySelector(".about-info");
+		let aboutBtn = document.querySelector(".about-btn");
+		let aboutBtnClose = document.querySelector(".about-btn2");
+		function aboutShow() {
+			about.classList.add("about-info-show");
+			aboutBtn.classList.add("about-btn-hide");
+			aboutBtnClose.classList.remove("about-btn-hide");
+		}
+		function aboutHide() {
+			about.classList.remove("about-info-show");
+			aboutBtn.classList.remove("about-btn-hide");
+			aboutBtnClose.classList.add("about-btn-hide");
+		}
+	</script>
+</body>
+</html>
