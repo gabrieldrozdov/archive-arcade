@@ -1,3 +1,27 @@
+<!-- FIX SLIDE IN TRANSFORM ISSUES
+COOKIE WARNING
+TRIGGER WARNING MAYBE
+FINISH ESSAY
+
+also make cookies actually work to track score
+need ml5 without p5
+
+THE ARCHIVE IS A THING OF THE PAST, BUT WE ARE ALSO CREATING IT THROUGH OUR OWN ACTIONS
+WHAT WILL THE FUTURE HUMANS SEE AS THEIR ARCHIVE?
+
+
+
+things that are be destroyed
+what's currently happening
+the future to come
+
+relationship between artifact and meaning, both graphically and otherwise
+
+should each of the games have an end screen with an explanation? maybe not
+
+NEED TO ADD HIGH SCORE TO EACH SUBPAGE
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +29,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ARCHIVE ARCADE</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="/style.css">
+	<link rel="icon" href="/assets/favicon/favicon-red.png">
 	<style>
-		html {
-			height: -webkit-fill-available;
-		}
-		body {
-			min-height: 100vh;
-			min-height: -webkit-fill-available;
+		:root {
+			--primary: var(--red);
 		}
 		.container {
 			height: 100vh;
@@ -50,11 +71,7 @@
 		.logo img {
 			position: absolute;
 			z-index: -1;
-			animation-name: logo-blink;
-			animation-duration: 3s;
-			animation-direction: reverse;
-			animation-iteration-count: infinite;
-			animation-timing-function: ease;
+			animation: 3s ease reverse logo-intro, 7s 3s ease infinite logo-blink;
 		}
 		.logo h1 {
 			top: 0;
@@ -62,9 +79,9 @@
 			color: var(--black);
 			text-transform: uppercase;
 			text-align: center;
-			font-size: 36px;
+			font-size: var(--md);
 		}
-		@keyframes logo-blink {
+		@keyframes logo-intro {
 			0% {
 				transform: scaleY(1);
 			}
@@ -86,6 +103,12 @@
 			85% {
 				transform: scaleY(1);
 			}
+			95% {
+				transform: scaleY(1);
+			}
+			100% {
+				transform: scaleY(0);
+			}
 		}
 		@keyframes logo-move {
 			from {
@@ -95,16 +118,22 @@
 				height: 20vh;
 			}
 		}
-
-		/* CHOICES */
-		@keyframes choices-move {
-			from {
-				transform: translateY(120vh);
+		@keyframes logo-blink {
+			0% {
+				transform: scaleY(1);
 			}
-			to {
-				transform: translateY(0vh);
+			95% {
+				transform: scaleY(1);
+			}
+			97% {
+				transform: scaleY(0);
+			}
+			100% {
+				transform: scaleY(1);
 			}
 		}
+
+		/* CHOICES */
 		.choices {
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;
@@ -114,14 +143,9 @@
 			position: absolute;
 			top: 20vh;
 			gap: 10px;
-			animation-name: choices-move;
-			animation-delay: 2s;
-			animation-duration: 1s;
-			animation-timing-function: ease-out;
-			animation-fill-mode: forwards;
-			transform: translateY(120vh);
+			z-index: 9;
 		}
-		.choices a {
+		.choices button {
 			text-decoration: none;
 			text-align: center;
 			text-transform: uppercase;
@@ -130,22 +154,23 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			font-size: 48px;
+			font-size: var(--lg);
 			transition: border .2s, border-radius .2s, transform .2s;
 			border-radius: 50%;
 			transform: scale(1.1);
 			position: relative;
 			z-index: 1;
 			line-height: 1em;
+			cursor: pointer;
 		}
-		.choices a:hover {
+		.choices button:hover {
 			transform: scale(1.2);
 			z-index: 9;
 		}
-		.choices a:active {
+		.choices button:active {
 			transform: scale(.9);
 		}
-		.choices a span {
+		.choices button span {
 			transition: transform .2s;
 			animation-name: choice-idle;
 			animation-duration: 1s;
@@ -169,9 +194,23 @@
 				opacity: 0;
 			}
 		}
+		@keyframes choices-move {
+			0% {
+				transform: translateX(-100vw);
+			}
+			50% {
+				transform: translateX(-100vw) scale(.5);
+			}
+			100% {
+				transform: translateX(0vh) scale(1.1);
+			}
+		}
 		.choice-1 {
 			background: var(--orange);
 			border: 0px solid var(--orange);
+			animation-name: choices-move;
+			animation-duration: 4.5s;
+			animation-timing-function: ease;
 		}
 		.choice-1:hover {
 			color: var(--orange);
@@ -181,6 +220,9 @@
 		.choice-2 {
 			background: var(--yellow);
 			border: 0px solid var(--yellow);
+			animation-name: choices-move;
+			animation-duration: 4s;
+			animation-timing-function: ease;
 		}
 		.choice-2:hover {
 			color: var(--yellow);
@@ -190,6 +232,9 @@
 		.choice-3 {
 			background: var(--blue);
 			border: 0px solid var(--blue);
+			animation-name: choices-move;
+			animation-duration: 3.5s;
+			animation-timing-function: ease;
 		}
 		.choice-3:hover {
 			color: var(--blue);
@@ -199,14 +244,14 @@
 		.choice-line-1, .choice-line-2 {
 			opacity: 0;
 		}
-		.choices a:hover .choice-line-0 {
+		.choices button:hover .choice-line-0 {
 			animation-name: choice-hover;
 			animation-duration: 1s;
 			animation-iteration-count: infinite;
 			animation-timing-function: steps(1);
 			animation-direction: normal;
 		}
-		.choices a:hover .choice-line-1 {
+		.choices button:hover .choice-line-1 {
 			animation-name: choice-hover;
 			animation-delay: .2s;
 			animation-duration: 1s;
@@ -214,13 +259,34 @@
 			animation-timing-function: steps(1);
 			animation-direction: normal;
 		}
-		.choices a:hover .choice-line-2 {
+		.choices button:hover .choice-line-2 {
 			animation-name: choice-hover;
 			animation-delay: .4s;
 			animation-duration: 1s;
 			animation-iteration-count: infinite;
 			animation-timing-function: steps(1);
 			animation-direction: normal;
+		}
+
+		/* TRANSITION */
+		.transition {
+			transform: scale(0);
+			width: 300vmax;
+			height: 300vmax;
+			border-radius: 50%;
+			position: absolute;
+			transition: 1s;
+			z-index: 99;
+			transition-timing-function: ease-in;
+		}
+		.transition-1 {
+			background-color: var(--orange);
+		}
+		.transition-2 {
+			background-color: var(--yellow);
+		}
+		.transition-3 {
+			background-color: var(--blue);
 		}
 
 		/* MARQUEE */
@@ -286,7 +352,7 @@
 			right: 0;
 			transform: translate(20vw, -20vw);
 			transition: .2s;
-			z-index: 99;
+			z-index: 999;
 		}
 		.about-btn {
 			position: absolute;
@@ -300,7 +366,7 @@
 			align-items: center;
 			justify-content: center;
 			color: var(--black);
-			font-size: 24px;
+			font-size: var(--sm);
 			transform: rotate(-30deg) scale(.8);
 			cursor: pointer;
 			transition: .2s;
@@ -320,7 +386,7 @@
 		.about-info {
 			position: absolute;
 			top: 105vh;
-			font-size: 48px;
+			font-size: var(--lg);
 			line-height: 1.2em;
 			transition: top 1s;
 			transition-timing-function: ease-in-out;
@@ -332,7 +398,8 @@
 			width: 100%;
 			display: flex;
 			flex-direction: column;
-			gap: 1.8em;
+			gap: .8em;
+			z-index: 99;
 		}
 		.about-info p {
 			max-width: 1000px;
@@ -344,26 +411,39 @@
 		.about-info-rev {
 			color: var(--black);
 		}
+		.about-info *::selection {
+			background: var(--black);
+		}
 
 		/* MOBILE STYLES */
 		@media screen and (max-width: 800px) {
+			.container {
+				overflow-y: auto;
+			}
 			.logo h1 {
-				font-size: 24px;
+				font-size: var(--sm);
 			}
 			.choices {
 				grid-template-columns: 1fr;
 			}
-			.choices a {
-				font-size: 36px;
-				height: 33vh;
-				margin-bottom: -10vh;
+			.choices button {
+				font-size: var(--md);
+				aspect-ratio: 1/.8;
 			}
 			.marquee {
 				opacity: 0 !important;
 			}
 			.about-info {
-				font-size: 24px;
+				top: 0;
+				left: 0;
+				display: none;
+				font-size: var(--sm);
 				padding: 80px 80px 80px 40px;
+				overflow-y: auto;
+				height: auto;
+			}
+			.about-info-show {
+				display: flex;
 			}
 		}
 	</style>
@@ -374,38 +454,41 @@
 		<header class="logo-container">
 			<div class="logo">
 				<div>
-					<img src="assets/hub/eye.svg">
+					<img src="assets/branding/eye.svg">
 					<h1>Archive</h1>
 				</div>
 				<div>
-					<img src="assets/hub/eye.svg">
+					<img src="assets/branding/eye.svg">
 					<h1>Arcade</h1>
 				</div>
 			</div>
 		</header>
 
 		<main class="choices">
-			<a href="#" class="choice-1">
+			<button class="choice-1" onclick="transition(this, 'wreck', 1)">
 				<span class="choice-line-2" style="color:var(--yellow);">Wreck</span>
 				<span class="choice-line-1" style="color:var(--blue);">Wreck</span>
 				<span class="choice-line-0">Wreck</span>
 				<span class="choice-line-1" style="color:var(--blue);">Wreck</span>
 				<span class="choice-line-2" style="color:var(--yellow);">Wreck</span>
-			</a>
-			<a href="#" class="choice-2">
+				<div class="transition transition-1"></div>
+			</button>
+			<button class="choice-2" onclick="transition(this, 'witness', 2)">
 				<span class="choice-line-2" style="color:var(--blue);">Witness</span>
 				<span class="choice-line-1" style="color:var(--orange);">Witness</span>
 				<span class="choice-line-0">Witness</span>
 				<span class="choice-line-1" style="color:var(--orange);">Witness</span>
 				<span class="choice-line-2" style="color:var(--blue);">Witness</span>
-			</a>
-			<a href="#" class="choice-3">
-				<span class="choice-line-2" style="color:var(--orange);">Weave</span>
-				<span class="choice-line-1" style="color:var(--yellow);">Weave</span>
-				<span class="choice-line-0">Weave</span>
-				<span class="choice-line-1" style="color:var(--yellow);">Weave</span>
-				<span class="choice-line-2" style="color:var(--orange);">Weave</span>
-			</a>
+				<div class="transition transition-2"></div>
+			</button>
+			<button class="choice-3" onclick="transition(this, 'write', 3)">
+				<span class="choice-line-2" style="color:var(--orange);">Write</span>
+				<span class="choice-line-1" style="color:var(--yellow);">Write</span>
+				<span class="choice-line-0">Write</span>
+				<span class="choice-line-1" style="color:var(--yellow);">Write</span>
+				<span class="choice-line-2" style="color:var(--orange);">Write</span>
+				<div class="transition transition-3"></div>
+			</button>
 
 			<div class="marquee">
 				<p>PICK A GAME ↑ PICK A GAME ↑ PICK A GAME ↑ PICK A GAME ↑ PICK A GAME ↑ PICK A GAME ↑ PICK A GAME ↑ PICK A GAME</p>
@@ -421,14 +504,14 @@
 		</div>
 
 		<div class="about-info">
-			<p><span class="about-info-rev">Design + Code:</span> <a href="https://www.gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a>.</p>
+			<p><span class="about-info-rev">Design + Code:</span> <a href="https://www.gabrieldrozdov.com/" target="_blank">Gabriel&nbsp;Drozdov</a>.</p>
 			<p><span class="about-info-rev">Colophon:</span> <em>Karrik</em> by Jean-Baptiste Morizot and Lucas Le Bihan, published by <a href="https://velvetyne.fr/fonts/karrik/" target="_blank">Velvetyne</a>.</p>
 			<p><span class="about-info-rev">What is this?</span> An arcade? Sort of. Maybe it’s a question: what is a game? Does it have to be joyful? Does it stop being a game if it’s not? Where do we draw that line?</p>
 			<p>This project started at the <a href="https://www.provlib.org/" target="_blank">Providence Public Library</a> during the Fall 2022 semester of RISD’s Graphic Design MFA program. This project began by looking at a vintage <a href="https://en.wikipedia.org/wiki/Whist" target="_blank">Whist</a> game board dating back at least 100 years. I tried to understand the game’s rules from the board, but this proved to be impossible — insufficient data. Cards were missing, no branding was visible, and a “patent pending” label lacked any real identification. What I was looking at no longer had info or history. Instead, it had degraded into a graphic artifact.</p>
 			<p>This arcade was inspired by that Whist board. Through these three games, I ask you to draw a line between play and meaning, or at least to question where this connection gets made in your head.</p>
-			<p><span class="about-info-rev">Is destruction fun?</span> What about in the context of what you’re destroying?</p>
-			<p><span class="about-info-rev">Is smiling fun?</span> What about in the context of what you’re smiling at?</p>
-			<p><span class="about-info-rev">Is creation fun?</span> What about in the context of what you’re creating?</p>
+			<p><span class="about-info-rev">Is destruction fun?</span> What about in the context of what you’re destroying? What does it mean to destroy something?</p>
+			<p><span class="about-info-rev">Is smiling fun?</span> What about in the context of what you’re smiling at? What does it mean to smile?</p>
+			<p><span class="about-info-rev">Is creation fun?</span> What about in the context of what you’re creating? What does it mean to create something?</p>
 		</div>
 	</div>
 
@@ -445,6 +528,25 @@
 			about.classList.remove("about-info-show");
 			aboutBtn.classList.remove("about-btn-hide");
 			aboutBtnClose.classList.add("about-btn-hide");
+		}
+
+		let buttons = document.querySelectorAll("button");
+		let aboutBtnContainer = document.querySelectorAll(".about-btn-container");
+		function transition(e, link, transitionNumber) {
+			e.style.zIndex = "999";
+			aboutBtnContainer[0].style.opacity = "0";
+			aboutBtnContainer[1].style.opacity = "0";
+			for (i=0; i<buttons.length; i++) {
+				if (buttons[i] != e) {
+					buttons[i].style.zIndex = "0";
+					buttons[i].style.pointerEvents = "none";
+				}
+			}
+			let transitionTarget = document.querySelector(`.transition-${transitionNumber}`);
+			transitionTarget.style.transform = "scale(1)";
+			setTimeout( ()=> {
+				window.location.href = link;
+			}, 1000);
 		}
 	</script>
 </body>

@@ -1,0 +1,100 @@
+<!-- ONLY SMILE WHEN THE TEXT IS BLUE
+BLUE TEXT IS NEW THINGS GETTING CREATED LIKE NEW WORLD ORDER
+
+random letters appear
+only need to smile at blue letters
+get a point whenever a bad word is created
+
+end score "congrats! you've stood by while ___ horrible things happened" or something
+
+opposite of wreck — need to collect thirty words about inequalities
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ARCHIVE ARCADE > WRITE</title>
+	<link rel="stylesheet" href="/style.css">
+	<link rel="icon" href="/assets/favicon/favicon-blue.png">
+
+	<style>
+		:root {
+			--primary: var(--blue);
+		}
+	</style>
+
+</head>
+<body>
+	<div class="game-intro">
+		<button class="return" onclick="backHome()">
+			<p>RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ </p>
+		</button>
+		<h1 class="game-name">
+			<span class="game-name-line-2">Write</span>
+			<span class="game-name-line-1">Write</span>
+			<span class="game-name-line-0">Write</span>
+			<span class="game-name-line-1">Write</span>
+			<span class="game-name-line-2">Write</span>
+		</h1>
+		<div class="game-info">
+			<div class="game-info-desc">
+				<img src="/assets/branding/eyes.svg" class="game-info-eyes">
+				<p class="game-info-highlight">Write the archive.</p>
+				<p>How quickly can you smile? Try to get a new high score! <span class="game-info-outline">No matter what you see, keep smiling.</span></p>
+				<p>Easy enough?</p>
+			</div>
+			<button class="game-info-start" onclick="startGame()">Click here to begin</button>
+		</div>
+	</div>
+
+	<script>
+		let gameIntro = document.querySelector(".game-intro");
+		function backHome() {
+			gameIntro.style.transform = "translateX(110%)";
+			setTimeout(() => {
+				window.location.href = "/";
+			}, 1000);
+		}
+		function startGame() {
+			gameIntro.style.transform = "translateX(-110%)";
+		}
+
+		let topics = [
+			"Fascist World Leaders",
+			"International Conflict",
+			"Lawless Billionaires",
+			"Police Brutality",
+			"Voter Suppression",
+			"Microplastics",
+			"Extreme Weather",
+			"Late-stage Capitalism",
+			"Union Busting",
+			"Wildfires",
+			"Inflation",
+			"Anti-vaxxers",
+			"Radicalism",
+			"Monopolization",
+			"Corrupt Politicians",
+			"Depression",
+			"Mass Murder",
+			"Medical Debt",
+			"White Supremacy",
+			"Mass Extinction",
+			"Nuclear Proliferation",
+			"Forced Labor",
+			"Polarization",
+			"War Crimes",
+			"Religious Genocide",
+			"Global Recession",
+			"Soaring Tuition",
+			"Insurrection",
+			"Mass Surveillance",
+			"Natural Resource Depletion"
+		]
+	</script>
+</body>
+</html>

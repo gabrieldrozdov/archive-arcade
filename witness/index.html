@@ -1,0 +1,121 @@
+<!-- NEWS HEADLINES
+WITNESS TO ATROCITIES IN THE WORLD
+
+each headline lasts 10 seconds
+
+news headline appears in the middle
+gets passed off to the side after a few seconds
+score if "congrats! you smiled through __ atrocities"
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ARCHIVE ARCADE > WITNESS</title>
+	<link rel="stylesheet" href="/style.css">
+	<link rel="icon" href="/assets/favicon/favicon-yellow.png">
+	<!-- <link rel="stylesheet" href="style.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/ml5js/Intro-ML-Arts-IMA@ml5-build-10-7-19/ml5_build/ml5.min.js"></script> -->
+
+	<style>
+		:root {
+			--primary: var(--yellow);
+		}
+	</style>
+
+</head>
+<body>
+	<div class="game-intro">
+		<button class="return" onclick="backHome()">
+			<p>RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ </p>
+		</button>
+		<h1 class="game-name">
+			<span class="game-name-line-2">Witness</span>
+			<span class="game-name-line-1">Witness</span>
+			<span class="game-name-line-0">Witness</span>
+			<span class="game-name-line-1">Witness</span>
+			<span class="game-name-line-2">Witness</span>
+		</h1>
+		<div class="game-info">
+			<div class="game-info-desc">
+				<img src="/assets/branding/eyes.svg" class="game-info-eyes">
+				<p class="game-info-highlight">Witness the archive.</p>
+				<p>How long can you smile for? Try to get a new high score! <span class="game-info-outline">No matter what you see, keep smiling.</span></p>
+				<p>Easy enough?</p>
+			</div>
+			<button class="game-info-start" onclick="startGame()">Click here to begin</button>
+		</div>
+	</div>
+
+	<script>
+		let gameIntro = document.querySelector(".game-intro");
+		function backHome() {
+			gameIntro.style.transform = "translateX(110%)";
+			setTimeout(() => {
+				window.location.href = "/";
+			}, 1000);
+		}
+		function startGame() {
+			gameIntro.style.transform = "translateX(-110%)";
+		}
+
+		let articles = [
+			["Putin Orders ‘Special Military Operation’ In Eastern Ukraine", "Feb. 23, 2022"],
+			["Why These Australia Fires Are Like Nothing We’ve Seen Before", "Jan. 21, 2020"],
+			["New Focus on How a Trump Tweet Incited Far-Right Groups Ahead of Jan. 6", "March 29, 2022"],
+			["Florida Flies 2 Planeloads of Migrants to Martha’s Vineyard", "Sept. 14, 2022"],
+			["After 3 Mass Shootings, a Thanksgiving With 14 Empty Chairs", "Nov. 24, 2022"],
+			["Adidas Ends Partnership With Kanye West at a Considerable Cost", "Oct. 25, 2022"],
+			["Confusion and Frustration Reign as Elon Musk Cuts Half of Twitter’s Staff", "Nov. 4, 2022"],
+			["Donald Trump Is Elected President in Stunning Repudiation of the Establishment", "Nov. 9, 2016"],
+			["U.S. Says FIFA Officials Were Bribed to Award World Cups to Russia and Qatar", "April 6, 2020"],
+			["Attempts to Ban Books Are Accelerating and Becoming More Divisive", "Sept. 16, 2022"],
+			["In 6-to-3 Ruling, Supreme Court Ends Nearly 50 Years of Abortion Rights", "June 24, 2022"],
+			["Coronavirus in N.Y.: Manhattan Woman Is First Confirmed Case in State", "March 1, 2020"],
+			["Hidden Beneath the Ocean’s Surface, Nearly 16 Million Tons of Microplastic", "Oct. 7, 2020"],
+			["Despite Uproar Over Floyd’s Death, the Number of Fatal Encounters With Police Hasn’t Changed", "Dec. 24, 2021"],
+			["Food Prices Soar, and So Do Companies’ Profits", "Nov. 2, 2022"],
+			["How Social Media Amplifies Misinformation More Than Information", "Oct. 13, 2022"],
+			["Overdose Deaths Have Surged During the Pandemic, C.D.C. Data Shows", "April 14, 2021"],
+			["The ‘Unbelievable, Horrible, Crushing Weight’ of Student Loans", "April 22, 2022"],
+			["A ‘New Era of Air Pollution’ in the Tropics Could Have a Huge Toll", "April 8, 2022"],
+			["From Protester to Prisoner: How Hong Kong Is Stifling Dissent", "May 28, 2021"],
+			["What is a recession, and when is the next one going to begin?", "June 24, 2022"],
+			["Amazon Labor Union Loses Election at Warehouse Near Albany", "Oct. 18, 2022"],
+			["Shinzo Abe Is Assassinated With a Handmade Gun, Shocking a Nation", "July 9, 2022"],
+			["Is Spreading Medical Misinformation a Doctor’s Free Speech Right?", "Nov. 30, 2022"],
+			["QAnon Accounts Found a Home, and Trump’s Support, on Truth Social", "Aug. 29, 2022"],
+			["Warning on Mass Extinction of Sea Life: ‘An Oh My God Moment’", "April 28, 2022"],
+			["Climate Change Is Accelerating, Bringing World ‘Dangerously Close’ to Irreversible Change", "Dec. 4, 2019"],
+			["A Partial List of Mass Shootings in the United States in 2022", "Nov. 24, 2022"],
+			["Election Officials Say Efforts to Intimidate Voters Are Widening", "Nov. 3, 2022"],
+			["Jair Bolsonaro Wins Brazil’s Presidency, in a Shift to the Far Right", "Oct. 28, 2018"]
+		]
+	</script>
+
+
+	<!-- <div class="flex-container">
+		<p id="info">Loading...</p>
+	</div>
+	<div class="flex-container">
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><path fill="var(--smiley)" d="M12,0c6.6,0,12,5.4,12,12s-5.4,12-12,12S0,18.6,0,12S5.4,0,12,0z M12,1c6.1,0,11,4.9,11,11s-4.9,11-11,11
+		S1,18.1,1,12S5.9,1,12,1z M8.5,8.5c0.6,0,1,0.4,1,1s-0.4,1-1,1s-1-0.4-1-1S7.9,8.5,8.5,8.5z M15.5,8.5c0.6,0,1,0.4,1,1s-0.4,1-1,1
+		s-1-0.4-1-1S14.9,8.5,15.5,8.5z"/></svg>
+	</div>
+	<div class="flex-container">
+		<svg id="smiley" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><path fill="var(--smiley)" d="M12,18.5L12,18.5c-2.3,0-4.5-1.2-6.2-3.3l0.8-0.6c1.5,1.9,3.4,3,5.4,3h0c2,0,3.9-1.1,5.4-3l0.8,0.6
+		C16.5,17.3,14.3,18.5,12,18.5z"/></svg>
+	</div>
+
+	<script src="script.js"></script> -->
+	
+</body>
+</html>

@@ -2,9 +2,13 @@
 	--black: #232323;
 	--white: #F2F2F2;
 	--orange: #FF8B29;
-	--yellow: #FFCC00;
+	--yellow: #ffcc00;
 	--blue: #2EAFFF;
 	--red: #FF4A3D;
+	--lg: 48px;
+	--md: 36px;
+	--sm: 24px;
+	--xs: 12px;
 }
 @font-face {
 	font-family: "Karrik";
@@ -23,10 +27,14 @@
 	box-sizing: border-box;
 	font-feature-settings: "ss01", "ss04";
 }
+*::selection {
+	background: var(--primary);
+}
 body {
 	background: var(--black);
 	color: var(--white);
 	font-size: 20px;
+	overflow: hidden;
 }
 a {
 	color: inherit;
@@ -38,4 +46,202 @@ a:hover {
 	body {
 		font-size: 10px;
 	}
+}
+
+/* GAME INTRO SCREEN */
+.game-intro {
+	display: grid;
+	width: 100vw;
+	height: 100vh;
+	grid-template-columns: 0fr 1fr 1fr;
+	background-color: var(--primary);
+	transition: transform 1s;
+	transition-timing-function: ease-in;
+}
+@keyframes return-in {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0%);
+	}
+}
+.return {
+	height: 100%;
+	border: unset;
+	font-size: var(--sm);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background-color: var(--white);
+	color: var(--black);
+	width: 2em;
+	text-decoration: none;
+	white-space: nowrap;
+	overflow: hidden;
+	transform: translateX(-100%);
+	animation-name: return-in;
+	animation-duration: 1s;
+	animation-delay: .4s;
+	animation-fill-mode: forwards;
+	cursor: pointer;
+}
+.return:hover {
+	background-color: var(--black);
+	color: var(--white);
+}
+.return:active {
+	opacity: .5;
+}
+@keyframes return {
+	from {
+		transform: translateY(0) rotateZ(-90deg);
+	}
+	to {
+		transform: translateY(300vh) rotateZ(-90deg);
+	}
+}
+.return p {
+	transform-origin: center;
+	animation: linear 180s infinite alternate return;
+}
+
+@keyframes game-name-in {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+.game-name {
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	color: var(--primary);
+	background-color: var(--black);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 64px;
+	font-weight: normal;
+	border-radius: 50%;
+	position: relative;
+	z-index: 1;
+	line-height: 1em;
+	animation-name: game-name-in;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}
+@keyframes game-name-flash {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+.game-name-line-0 {
+	animation-name: game-name-flash;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(1);
+	animation-direction: normal;
+}
+.game-name-line-1 {
+	animation-name: game-name-flash;
+	animation-delay: .2s;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(1);
+	animation-direction: normal;
+}
+.game-name-line-2 {
+	animation-name: game-name-flash;
+	animation-delay: .4s;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(1);
+	animation-direction: normal;
+}
+@keyframes game-info-in {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateX(0%);
+	}
+}
+.game-info {
+	background: var(--black);
+	color: var(--primary);
+	height: 100vh;
+	animation-name: game-info-in;
+	animation-duration: 1s;
+	transform: translateY(100%);
+	animation-delay: .2s;
+	animation-fill-mode: forwards;
+	line-height: 1.2em;
+	font-size: var(--lg);
+	padding: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.game-info-desc {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: .8em;
+}
+@keyframes eyes-blink {
+	0% {
+		transform: scaleY(1);
+	}
+	95% {
+		transform: scaleY(1);
+	}
+	97% {
+		transform: scaleY(0);
+	}
+	100% {
+		transform: scaleY(1);
+	}
+}
+.game-info-eyes {
+	max-width: 160px;
+	width: 100%;
+	animation-name: eyes-blink;
+	animation-duration: 6s;
+	animation-direction: normal;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease;
+}
+.game-info-highlight {
+	color: var(--white);
+}
+.game-info-outline {
+	color: var(--black);
+	-webkit-text-stroke: 1px var(--primary);
+}
+.game-info-start {
+	line-height: 1.2em;
+	font-size: var(--lg);
+	background-color: var(--black);
+	border: 10px solid var(--primary);
+	padding: 20px;
+	border-radius: 50%;
+	color: var(--primary);
+	cursor: pointer;
+	transition: transform .2s;
+}
+.game-info-start:hover {
+	background-color: var(--primary);
+	color: var(--black);
+	transform: scale(1.1);
+}
+.game-info-start:active {
+	transform: scale(.9);
 }

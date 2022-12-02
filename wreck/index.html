@@ -1,0 +1,100 @@
+<!-- SMILING DETERIORATES RIGHTS 
+
+need to test to see how many smiles it takes to break apart a word
+10?
+--
+
+word appears
+letters move further apart until they're in a jumble
+new word appears
+rinse and repeat
+your score is determined by how many words you destroyed
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ARCHIVE ARCADE > WRECK</title>
+	<link rel="stylesheet" href="/style.css">
+	<link rel="icon" href="/assets/favicon/favicon-orange.png">
+
+	<style>
+		:root {
+			--primary: var(--orange);
+		}
+	</style>
+
+</head>
+<body>
+	<div class="game-intro">
+		<button class="return" onclick="backHome()">
+			<p>RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ RETURN HOME ↑ </p>
+		</button>
+		<h1 class="game-name">
+			<span class="game-name-line-2">Wreck</span>
+			<span class="game-name-line-1">Wreck</span>
+			<span class="game-name-line-0">Wreck</span>
+			<span class="game-name-line-1">Wreck</span>
+			<span class="game-name-line-2">Wreck</span>
+		</h1>
+		<div class="game-info">
+			<div class="game-info-desc">
+				<img src="/assets/branding/eyes.svg" class="game-info-eyes">
+				<p class="game-info-highlight">Wreck the archive.</p>
+				<p>How many times can you smile in a minute? Try to get a new high score! <span class="game-info-outline">No matter what you see, keep smiling.</span></p>
+				<p>Easy enough?</p>
+			</div>
+			<button class="game-info-start" onclick="checkCookie()">Click here to begin</button>
+		</div>
+	</div>
+
+	<script>
+		let gameIntro = document.querySelector(".game-intro");
+		function backHome() {
+			gameIntro.style.transform = "translateX(110%)";
+			setTimeout(() => {
+				window.location.href = "/";
+			}, 1000);
+		}
+		function startGame() {
+			gameIntro.style.transform = "translateX(-110%)";
+		}
+
+		let topics = [
+			"Women’s Rights",
+			"Separation Of Church And State",
+			"Freedom Of Speech And Press",
+			"The Middle Class",
+			"Affordable Healthcare",
+			"Mental Health",
+			"Democratic Governments",
+			"Affordable Housing",
+			"Dependable Police Forces",
+			"Temperate Climates",
+			"Economic Stability",
+			"Impartial Supreme Court Justices",
+			"Healthy Market Competition",
+			"High Taxes For The Upper Class",
+			"Pandemic Assistance",
+			"Labor Unions",
+			"Local Community",
+			"Political Decorum",
+			"Livable Minimum Wage",
+			"World Peace",
+			"Accountable Politicians",
+			"Globalism",
+			"International Cultural Exchange",
+			"Right To Privacy",
+			"Resources For The Elderly",
+			"Clean Water",
+			"Access To Education",
+			"Long-term Job Security",
+			"Income Equality"
+		]
+
+	</script>
+</body>
+</html>
