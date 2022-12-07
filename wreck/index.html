@@ -83,6 +83,9 @@
 	<div class="video-container"></div>
 
 	<script>
+		if (getCookie("wreck-highscore") == "") {
+				setCookie("wreck-highscore", 50, 30);
+		} 
 		let order = [];
 		let smileScore = 0;
 		let end = true;
@@ -201,6 +204,7 @@
 			breakWord();
 		}
 		// GO THROUGH SUBROUND
+		let smileDelay = false;
 		function breakWord() {
 			if (subRound > 0) {
 				for (i=0; i<letters.length; i++) {
@@ -223,9 +227,13 @@
 			if (subRound >= 5) {
 				currentTopicE.classList.add("wreck-word-faded");
 				round++;
+				smileDelay = true;
 				setTimeout(function () {
 					synth3.triggerAttackRelease("Ab2", "4n");
 					generateWord();
+					setTimeout(function () {
+						smileDelay = false;
+					}, 500);
 				}, 500)
 			}
 			subRound ++;
@@ -337,7 +345,7 @@
 							smileText.style.color = "var(--orange)";
 							smiling = false;
 							synth2.triggerAttackRelease("B2", "8n");
-						} else if (happy > .6 && smiling == false) {
+						} else if (happy > .6 && smiling == false && smileDelay == false) {
 							smile.classList.add("game-smile-active");
 							smileMouth.style.transform = "scaleY(1)";
 							smileText.innerText = "STOP SMILING!";
