@@ -277,11 +277,18 @@ a:hover {
 	font-size: var(--lg);
 	color: var(--white);
 	transition: transform .5s;
+	text-align: center;
+	max-width: 1000px;
 }
 .game-topic span {
 	display: inline-block;
 	transition: .5s;
 	min-width: .25em;
+}
+.witness-date {
+	color: var(--primary);
+	font-size: var(--sm);
+	transition: opacity .5s;
 }
 .game-ui {
 	width: 100vw;
@@ -311,18 +318,18 @@ a:hover {
 }
 .smile-head {
 	fill: none;
-	stroke: var(--orange);
+	stroke: var(--primary);
 	stroke-width: 10;
 	stroke-miterlimit: 10;
 	transition: .5s;
 }
 .smile-eyes {
-	fill: var(--orange);
+	fill: var(--primary);
 	transition: .5s;
 }
 .smile-mouth {
 	fill: none;
-	stroke: var(--orange);
+	stroke: var(--primary);
 	stroke-width: 10;
 	stroke-miterlimit: 10;
 	transition: .5s;
@@ -341,7 +348,7 @@ a:hover {
 #smile-text {
 	font-size: var(--sm);
 	padding-top: 10px;
-	color: var(--orange);
+	color: var(--primary);
 	text-align: center;
 	text-transform: uppercase;
 	width: 100%;
@@ -369,28 +376,27 @@ a:hover {
 	color: var(--black);
 	text-align: center;
 	padding: 5px 8px;
-	background-color: var(--orange);
+	background-color: var(--primary);
 	line-height: 1em;
 	border-radius: 50px;
 }
 #game-score {
 	font-size: var(--sm);
-	color: var(--orange);
+	color: var(--primary);
 	text-align: right;
 	width: 300px;
 	color: var(--white);
 }
 #game-highscore {
 	font-size: var(--sm);
-	color: var(--orange);
+	color: var(--primary);
 	text-align: left;
 	width: 300px;
 	color: var(--white);
 }
-
-.wreck-word-faded {
+.game-word-faded {
 	color: var(--black);
-	-webkit-text-stroke: 1px var(--orange);
+	-webkit-text-stroke: 1px var(--primary);
 }
 
 .game-transition {
