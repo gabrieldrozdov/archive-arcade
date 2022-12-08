@@ -337,8 +337,8 @@
 			interface.style.transform = "scale(0)";
 			gameEndContainer.style.transform = "scale(1)";
 			gameEndScore.innerText = smileScore;
-			gameEndWreck.innerText = parseInt(smileScore/5);
-			if (parseInt(smileScore/5) == 1) {
+			gameEndWreck.innerText = round;
+			if (round == 1) {
 				gameEndWreckS.style.display = "none";
 			} else {
 				gameEndWreckS.style.display = "inline";
