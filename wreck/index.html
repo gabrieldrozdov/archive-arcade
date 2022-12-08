@@ -119,9 +119,12 @@
 			gameTopic.style.opacity = "0";
 			gameEndContainer.style.transform = "scale(0)";
 			// Initalize order for game
-			let nums = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],
-				i = nums.length,
-				j = 0;
+			let nums = [];
+			for (num=0; num<topics.length; num++) {
+				nums.push(num);
+			}
+			i = nums.length,
+			j = 0;
 			while (i--) {
 				j = Math.floor(Math.random() * (i+1));
 				order.push(nums[j]);
@@ -250,7 +253,7 @@
 
 		// GAME TIMER
 		function gameTimer() {
-			let time = 5;
+			let time = 60;
 			let timeLoop = setInterval(function () {
 				time = (Math.round((parseFloat(time)-.01)*100)/100).toFixed(2);
 				timer.innerHTML = time;

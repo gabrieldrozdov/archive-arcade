@@ -121,9 +121,12 @@
 			gameTopic.style.opacity = "0";
 			gameEndContainer.style.transform = "scale(0)";
 			// Initalize order for game
-			let nums = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],
-				i = nums.length,
-				j = 0;
+			let nums = [];
+			for (num=0; num<topics.length; num++) {
+				nums.push(num);
+			}
+			i = nums.length,
+			j = 0;
 			while (i--) {
 				j = Math.floor(Math.random() * (i+1));
 				order.push(nums[j]);
@@ -189,7 +192,23 @@
 			["Climate Change Is Accelerating, Bringing World ‘Dangerously Close’ to Irreversible Change", "Dec. 4, 2019"],
 			["A Partial List of Mass Shootings in the United States in 2022", "Nov. 24, 2022"],
 			["Election Officials Say Efforts to Intimidate Voters Are Widening", "Nov. 3, 2022"],
-			["Jair Bolsonaro Wins Brazil’s Presidency, in a Shift to the Far Right", "Oct. 28, 2018"]
+			["Jair Bolsonaro Wins Brazil’s Presidency, in a Shift to the Far Right", "Oct. 28, 2018"],
+			["Marcos Win Prompts Protests in the Philippines", "May 10, 2022"],
+			["As the Planet Cooks, Climate Stalls as a Political Issue","July 18, 2022"],
+			["For Monkeypox Patients, Excruciating Symptoms and a Struggle for Care","July 18, 2022"],
+			["U.S. Coronavirus Death Toll Surpasses 700,000 Despite Wide Availability of Vaccines","November 1, 2021"],
+			["More Than Half of Police Killings Are Mislabeled, New Study Says","September 30, 2021"],
+			["He was a baby on 9/11. Now he’s one of the last casualties of America’s longest war.","August 29, 2021"],
+			["Trump Wants U.S. ‘Opened Up’ by Easter, Despite Health Officials’ Warnings","March 25, 2020"],
+			["Cambridge Analytica, Trump-Tied Political Firm, Offered to Entrap Politicians","March 20, 2018"],
+			["‘It’s a Massacre’: Blast in Kabul Deepens Toll of a Long War","January 27, 2018"],
+			["Victims of Abuse by Religious Order Priests Say Their Claims Fall Through the Cracks","Jan. 9, 2019"],
+			["Iran Executes Man Over Nationwide Protests","Dec. 8, 2022"],
+			["U.S. Court Dismisses Suit Against Saudi Ruler in Khashoggi Killing","Dec. 7, 2022"],
+			["Europe’s Heat Wave Shatters British Records and Drives Wildfires","July 19, 2022"],
+			["Report on Uvalde Shooting Finds ‘Systemic Failures’ in Police Response","July 17, 2022"],
+			["What New Abortion Bans Mean for the Youngest Patients","July 25, 2022"],
+			["Biden Concedes Defeat on Climate Bill as Manchin and Inflation Upend Agenda","July 15, 2022"]
 		]
 		let gameTopic = document.querySelector(".game-topics");
 		let round = 0;
@@ -261,7 +280,7 @@
 			let timeLoop = setInterval(function () {
 				time = (Math.round((parseFloat(time)+.01)*100)/100).toFixed(2);
 				timer.innerHTML = time;
-				if (end == true || round == 30) {
+				if (end == true || round == topics.length) {
 					clearInterval(timeLoop);
 				}
 			}, 10);
