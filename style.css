@@ -380,6 +380,9 @@ a:hover {
 	line-height: 1em;
 	border-radius: 50px;
 }
+.timer-write {
+	padding: 5px 20px !important;
+}
 #game-score {
 	font-size: var(--sm);
 	color: var(--primary);
@@ -398,11 +401,16 @@ a:hover {
 	color: var(--black);
 	-webkit-text-stroke: 1px var(--primary);
 }
+.game-word-faded span {
+	color: var(--black) !important;
+	-webkit-text-stroke: 1px var(--primary) !important;
+}
 
 .game-transition {
 	pointer-events: none;
 	font-size: var(--lg);
 	color: var(--white);
+	z-index: 999;
 }
 @keyframes game-transition {
 	0% {

@@ -129,6 +129,12 @@
 				order.push(nums[j]);
 				nums.splice(j,1);
 			}
+			// Display highscore
+			if (getCookie("witness-highscore") == "") {
+				highscore.innerText = "6";
+			} else {
+				highscore.innerText = getCookie("witness-highscore");
+			}
 			setTimeout(function() {
 				transition1.style.animationName = "game-transition";
 				synth1.triggerAttackRelease("C4", "8n");
@@ -255,11 +261,6 @@
 			let timeLoop = setInterval(function () {
 				time = (Math.round((parseFloat(time)+.01)*100)/100).toFixed(2);
 				timer.innerHTML = time;
-				if (getCookie("witness-highscore") == "") {
-					highscore.innerText = "6";
-				} else {
-					highscore.innerText = getCookie("witness-highscore");
-				}
 				if (end == true || round == 30) {
 					clearInterval(timeLoop);
 				}
@@ -358,7 +359,7 @@
 								smileDelay = true;
 								penalty();
 							}
-						} else if (happy > .6) {
+						} else if (happy > .2) {
 							smile.classList.add("game-smile-active");
 							smileMouth.style.transform = "scaleY(1)";
 							smileText.innerText = "KEEP SMILING!";

@@ -126,6 +126,12 @@
 				order.push(nums[j]);
 				nums.splice(j,1);
 			}
+			// Display highscore
+			if (getCookie("wreck-highscore") == "") {
+				highscore.innerText = "50";
+			} else {
+				highscore.innerText = getCookie("wreck-highscore");
+			}
 			setTimeout(function() {
 				transition1.style.animationName = "game-transition";
 				synth1.triggerAttackRelease("C4", "8n");
@@ -221,7 +227,7 @@
 					if (Math.random() < .5) {
 						dirY = -1;
 					}
-					currentLetter.style.transform = `rotate(${Math.random()*(2**subRound)*dirR}deg) translate(${(subRound**2)*dirX}vw,${(subRound**2)*dirY}vh)`;
+					currentLetter.style.transform = `rotate(${Math.random()*(2**(subRound))*dirR}deg) translate(${(subRound**2)*dirX}vw,${(subRound**2)*dirY}vh)`;
 				}
 			}
 			if (subRound >= 5) {
@@ -246,11 +252,6 @@
 				time = (Math.round((parseFloat(time)-.01)*100)/100).toFixed(2);
 				timer.innerHTML = time;
 				score.innerText = smileScore;
-				if (getCookie("wreck-highscore") == "") {
-					highscore.innerText = "50";
-				} else {
-					highscore.innerText = getCookie("wreck-highscore");
-				}
 				if (time == 0 || round == 30) {
 					clearInterval(timeLoop);
 					end = true;
@@ -268,8 +269,8 @@
 			smileText.style.transform = "scale(0)";
 			gameEndContainer.style.transform = "scale(1)";
 			gameEndScore.innerText = smileScore;
-			gameEndWreck.innerText = parseInt(smileScore/5);
-			if (parseInt(smileScore/5) == 1) {
+			gameEndWreck.innerText = round;
+			if (round == 1) {
 				gameEndWreckS.style.display = "none";
 			} else {
 				gameEndWreckS.style.display = "inline";
