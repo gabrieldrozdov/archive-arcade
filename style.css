@@ -35,6 +35,7 @@ body {
 	color: var(--white);
 	font-size: 20px;
 	overflow: hidden;
+	transform: rotateZ(0);
 }
 a {
 	color: inherit;
@@ -226,11 +227,11 @@ a:hover {
 	-webkit-text-stroke: 1px var(--primary);
 }
 .game-info-start {
-	line-height: 1.2em;
+	line-height: 1em;
 	font-size: var(--lg);
 	background-color: var(--black);
 	border: 10px solid var(--primary);
-	padding: 20px;
+	padding: 25px 20px;
 	border-radius: 50%;
 	color: var(--primary);
 	cursor: pointer;

@@ -34,7 +34,7 @@
 			<div class="game-info-desc">
 				<img src="../assets/branding/eyes.svg" class="game-info-eyes">
 				<p class="game-info-highlight">Wreck the archive.</p>
-				<p>How many times can you smile in a minute? Try to get a new high score! <span class="game-info-outline">No matter what you see, keep smiling.</span></p>
+				<p>Smile as many times as you can in one minute! Try to get a new high score! <span class="game-info-outline">No matter what you see, keep smiling.</span></p>
 				<p>Easy enough?</p>
 			</div>
 			<button class="game-info-start game-info-wait" onclick="startGame()">Loading...</button>
@@ -111,6 +111,7 @@
 			order = [];
 			smileScore = 0;
 			end = true;
+			smileDelay = false;
 			gameIntro.style.transform = "translateX(-110%)";
 			transition1.style.animationName = "";
 			transition2.style.animationName = "";
@@ -235,11 +236,13 @@
 				round++;
 				smileDelay = true;
 				setTimeout(function () {
-					synth3.triggerAttackRelease("G4", "16n");
-					generateWord();
-					setTimeout(function () {
-						smileDelay = false;
-					}, 500);
+					if (!end) {
+						synth3.triggerAttackRelease("G4", "16n");
+						generateWord();
+						setTimeout(function () {
+							smileDelay = false;
+						}, 500);
+					}
 				}, 500)
 			}
 			subRound ++;
@@ -247,7 +250,7 @@
 
 		// GAME TIMER
 		function gameTimer() {
-			let time = 60;
+			let time = 5;
 			let timeLoop = setInterval(function () {
 				time = (Math.round((parseFloat(time)-.01)*100)/100).toFixed(2);
 				timer.innerHTML = time;
